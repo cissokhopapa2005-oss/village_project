@@ -1,0 +1,24 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Histoire | Khossanto{% endblock %}
+
+{% block content %}
+<section class="page-hero small-hero">
+  <div class="container">
+    <p class="eyebrow">Notre village</p>
+    <h1>Histoire et identité</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container story-page">
+    {% if histoire %}
+      <h2>{{ histoire.titre }}</h2>
+      <p>{{ histoire.contenu|linebreaksbr }}</p>
+    {% else %}
+      <h2>Histoire de Khossanto</h2>
+      <p>Notre village s'est construit au fil des siècles, porté par le travail, la solidarité et le goût du vivre ensemble.</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

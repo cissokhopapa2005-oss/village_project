@@ -1,0 +1,120 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Accueil | Khossanto{% endblock %}
+
+{% block content %}
+<section class="hero tourist-hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <div class="status-tag">Site en maintenance</div>
+      <p class="eyebrow">Information</p>
+      <h1>Le site de Khossanto est temporairement inaccessible.</h1>
+      <p class="lead">
+        Nous effectuons actuellement une mise à jour afin de mieux présenter la cascade de Kédougou, le patrimoine et les richesses touristiques de notre village.
+      </p>
+      <div class="hero-actions">
+        <a href="{% url 'contact' %}" class="btn btn-primary">Contact</a>
+        <a href="{% url 'histoire' %}" class="btn btn-secondary">Retour bientôt</a>
+      </div>
+      <ul class="hero-meta">
+        <li>Maintenance</li>
+        <li>Accueil prochainement</li>
+        <li>Merci pour votre patience</li>
+      </ul>
+    </div>
+    <div class="hero-visual" aria-label="Vue de la cascade">
+      <div class="photo-card scenic-card">
+        <span>Bienvenue à Khossanto</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section maintenance-panel" id="maintenance">
+  <div class="container intro">
+    <div class="maintenance-box">
+      <p class="warning-label">Information importante</p>
+      <h2>Le site est temporairement indisponible</h2>
+      <p>
+        Nous mettons en place de nouvelles informations touristiques, un meilleur accueil et une présentation plus moderne de notre village. Merci de revenir très bientôt pour découvrir la cascade de Kédougou.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section alt-section">
+  <div class="container cards-grid">
+    <article class="feature-card">
+      <h3>Vue panoramique</h3>
+      <p>Des paysages à couper le souffle, avec des points de vue parfaits pour admirer la cascade et la vallée.</p>
+    </article>
+    <article class="feature-card">
+      <h3>Aventure outdoor</h3>
+      <p>Randonnées, baignades et découvertes en pleine nature, dans un cadre encore préservé.</p>
+    </article>
+    <article class="feature-card">
+      <h3>Culture locale</h3>
+      <p>Des traditions vivantes, un accueil chaleureux et une vie villageoise pleine de charme.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section highlights-section">
+  <div class="container">
+    <div class="section-heading">
+      <h2>À visiter</h2>
+    </div>
+    <div class="visit-grid">
+      <div class="visit-item">
+        <h3>La cascade</h3>
+        <p>Un spectacle naturel impressionnant, idéal pour des photos, des moments de calme et des escapades en plein air.</p>
+      </div>
+      <div class="visit-item">
+        <h3>Les sentiers</h3>
+        <p>Des chemins accessibles et pittoresques pour profiter de la nature et des panoramas environnants.</p>
+      </div>
+      <div class="visit-item">
+        <h3>Le village</h3>
+        <p>Une atmosphère authentique, des habitants accueillants et une culture qui donne du sens à chaque visite.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Notre histoire</h2>
+      <a href="{% url 'histoire' %}">Voir plus</a>
+    </div>
+    <div class="story-box">
+      {% if histoire %}
+        <h3>{{ histoire.titre }}</h3>
+        <p>{{ histoire.contenu|truncatewords:35 }}</p>
+      {% else %}
+        <p>Notre village sait garder son âme et ses traditions.</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="section alt-section">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Actualités</h2>
+      <a href="{% url 'actualites' %}">Tout voir</a>
+    </div>
+    <div class="news-grid">
+      {% for article in actualites %}
+        <article class="news-card">
+          <span class="news-date">{{ article.date_publication|date:'d/m/Y' }}</span>
+          <h3>{{ article.titre }}</h3>
+          <p>{{ article.contenu|truncatewords:22 }}</p>
+        </article>
+      {% empty %}
+        <p>Aucune actualité pour le moment.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

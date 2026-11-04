@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Actualités | Khossanto{% endblock %}
+
+{% block content %}
+<section class="page-hero small-hero">
+  <div class="container">
+    <p class="eyebrow">À ne pas manquer</p>
+    <h1>Actualités du village</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container news-list">
+    {% for article in actualites %}
+      <article class="news-item">
+        <div class="news-meta">{{ article.date_publication|date:'d F Y' }}</div>
+        <h2>{{ article.titre }}</h2>
+        <p>{{ article.contenu|linebreaksbr }}</p>
+      </article>
+    {% empty %}
+      <p>Aucune actualité n'a encore été publiée.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

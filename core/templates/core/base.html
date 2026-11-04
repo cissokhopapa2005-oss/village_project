@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Khossanto | Cascade de Kédougou{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="{% url 'home' %}" class="brand">Khossanto</a>
+        <nav class="main-nav" aria-label="Navigation principale">
+          <a href="{% url 'home' %}">Accueil</a>
+          <a href="{% url 'histoire' %}">Histoire</a>
+          <a href="{% url 'actualites' %}">Actualités</a>
+          <a href="{% url 'contact' %}">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p>© 2026 Khossanto</p>
+        <p>Entre patrimoine, nature et vie locale</p>
+      </div>
+    </footer>
+  </body>
+</html>
